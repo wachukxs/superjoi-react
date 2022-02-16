@@ -1,3 +1,10 @@
+# Okay okay
+
+using https://kentcdodds.com/blog/introducing-downshift-for-react for search
+
+# Be inspired:
+https://github.com/enaqx/awesome-react
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
