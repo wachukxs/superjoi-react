@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./SearchBar.css";
+import "./SearchAutocomplete.css";
 
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-
-function SearchBar() {
+/**
+ * after every search, maybe do auto complete with fetched result
+ * @returns 
+ */
+function SearchAutocomplete() {
 
     // use state to manage this
     let top100Films: Array<{label: string, year: number}> = [
@@ -33,4 +36,4 @@ function SearchBar() {
       );
 }
 
-export default SearchBar;
+export default SearchAutocomplete;

@@ -1,13 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import SearchBar from './components/SearchBar/SearchBar';
+import SearchAutocomplete from './components/SearchAutocomplete/SearchAutocomplete';
+import SearchInput from './components/SearchInput/SearchInput';
+import MediaCard from './components/MediaCard/MediaCard';
 
 function App() {
   return (
     <div className="wrapper">
-      <SearchBar />
+      <SearchInput />
       
     </div>
   );
