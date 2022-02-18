@@ -1,12 +1,8 @@
-# Okay okay
+# Setup
 
-using https://kentcdodds.com/blog/introducing-downshift-for-react for search
+* run `yarn install`
+* `yarn run start`
 
-# default image url for placeholder card image
-* https://mui.com/static/images/cards/live-from-space.jpg
-
-# Be inspired:
-https://github.com/enaqx/awesome-react
 
 # Getting Started with Create React App
 
