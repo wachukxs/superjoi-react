@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import "./MediaCard.css";
 
 import { useTheme } from '@mui/material/styles';
@@ -24,6 +24,11 @@ import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+
+
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 interface MediaCardProps {
@@ -57,6 +62,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, channelId, videoId }: MediaCardProps) => {
 
   const [expanded, setExpanded] = React.useState(false);
+  const [commentStatus, setCommentStatus] = React.useState("Loading...")
 
   const [videoDetails, setVideoDetails] = React.useState<any>(null);
 
@@ -70,9 +76,9 @@ const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, ch
     try { // todo, create baseUrl and use dynamically
       if (!videoDetails) {
         let baseUrl = 'https://superjoi-node.herokuapp.com';
-            if (window.location.host.includes('localhost:')) {
-                baseUrl = "http://localhost:4005"
-            }
+        if (window.location.host.includes('localhost:')) {
+          baseUrl = "http://localhost:4005"
+        }
         let res = await fetch(`${baseUrl}/api/search/videos/details?videoId=${videoId}`, {
           method: "GET",
           // body: JSON.stringify({ // only for 'POST'
@@ -89,10 +95,14 @@ const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, ch
           // show message to user
           // set results
         } else { // show message
+          setVideoDetails(false);
+          setCommentStatus("Comments disabled")
         }
       }
     } catch (error) { // show message
       console.log(error);
+      setVideoDetails(false);
+          setCommentStatus("Comments disabled")
     }
   }
 
@@ -160,7 +170,7 @@ const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, ch
             <section className="comments">
               <List key={"parent_comments" + channelId} sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 {
-                  videoDetails && videoDetails?.items.length > 0 && videoDetails.items.map((item: any, index: number) => (
+                  videoDetails && videoDetails?.items.length > 0 && videoDetails?.items.map((item: any, index: number) => (
                     <>
                       <ListItem key={item.id} alignItems="flex-start">
                         <ListItemAvatar key={item.id + "listitemavatar"}>
@@ -188,6 +198,9 @@ const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, ch
                       <Divider key={item.id + "divider"} variant="inset" component="li" />
                     </>
                   ))
+                }
+                {
+                  !videoDetails && commentStatus
                 }
 
 
