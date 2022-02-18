@@ -1,0 +1,4 @@
+section.comments {
+    overflow-y: scroll;
+    height: 150px;
+}

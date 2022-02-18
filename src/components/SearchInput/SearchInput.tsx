@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SearchInput.css";
 
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import { experimentalStyled as styled } from '@mui/material/styles';
 
 import Grid from '@mui/material/Grid';
 import MediaCard from '../MediaCard/MediaCard';
@@ -41,7 +33,7 @@ function SearchInput() {
 
     const askYouTube = async () => {
         try { // todo, create baseUrl and use dynamically
-            let res = await fetch(`http://localhost:4005/api/search/?queryString="${searchText}`, {
+            let res = await fetch(`http://localhost:4005/api/search/?queryString=${searchText}`, {
                 method: "GET",
                 // body: JSON.stringify({ // only for 'POST'
                 //     query: searchText,
