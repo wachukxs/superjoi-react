@@ -69,7 +69,11 @@ const MediaCard = ({ channelTitle, title, publishedAt, description, imageUrl, ch
   const getVideoDetails = async () => {
     try { // todo, create baseUrl and use dynamically
       if (!videoDetails) {
-        let res = await fetch(`http://localhost:4005/api/search/videos/details?videoId=${videoId}`, {
+        let baseUrl = 'https://superjoi-node.herokuapp.com';
+            if (window.location.host.includes('localhost:')) {
+                baseUrl = "http://localhost:4005"
+            }
+        let res = await fetch(`${baseUrl}/api/search/videos/details?videoId=${videoId}`, {
           method: "GET",
           // body: JSON.stringify({ // only for 'POST'
           //     query: searchText,

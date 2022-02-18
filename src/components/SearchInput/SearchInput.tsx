@@ -33,7 +33,11 @@ function SearchInput() {
 
     const askYouTube = async () => {
         try { // todo, create baseUrl and use dynamically
-            let res = await fetch(`http://localhost:4005/api/search/?queryString=${searchText}`, {
+            let baseUrl = 'https://superjoi-node.herokuapp.com';
+            if (window.location.host.includes('localhost:')) {
+                baseUrl = "http://localhost:4005"
+            }
+            let res = await fetch(`${baseUrl}/api/search/?queryString=${searchText}`, {
                 method: "GET",
                 // body: JSON.stringify({ // only for 'POST'
                 //     query: searchText,
