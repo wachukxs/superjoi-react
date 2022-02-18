@@ -3,6 +3,8 @@
 * run `yarn install`
 * `yarn run start`
 
+* the expandable icon on each card shows the associated comments on the app. the video icon takes you to the video, and the list icon to the channel's url
+
 
 # Getting Started with Create React App
 
